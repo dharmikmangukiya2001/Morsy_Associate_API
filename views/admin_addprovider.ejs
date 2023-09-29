@@ -1,0 +1,374 @@
+<%-include('admin_header')%>
+
+
+<div id="main">
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+
+    <div class="page-heading">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h2>Service Provider Form</h2>
+                </div>
+                <div class="col-12 col-md-6 order-md-2 order-first">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add Provider</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Basic Horizontal form layout section start -->
+        <section id="basic-horizontal-layouts">
+            <div class="row match-height">
+                <div class="col-md-112 col-12">
+                    <div class="card">
+                        <div class="card-header col-md-6">
+                            <label for="">Select From</label>
+                            <select id="select_box" class="form-control">
+                                <option>--- Select a Option ---</option>
+                                <option value="a">Property Dealer From</option>
+                                <option value="b">b</option>
+                                <option value="c">c</option>
+                                <option value="d">d</option>
+                              </select>
+                        </div>
+                        
+
+<!-- Property Dealer -->
+                        <div id="a" class="hide">
+                            <div class="card-content">
+                                                      <div class="card-body">
+                                                          <form class="form form-horizontal" action="/admin/addprovider" method="post" enctype="multipart/form-data">
+                                                              <div class="form-body">
+                                                                  <div class="row">
+                                                                      <div class="col-12">
+                                                                          <h5>Personal Information</h5>
+                                                                      </div>
+                                                                      <div class="col-12 d-flex">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Provider Full Name <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="providername" placeholder="Full Name">
+                                                                          </div>
+                                                                          <div class="col-md-5 form-group">
+                                                                              <label>Provider Mobile Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="providernumber" placeholder="Mobile Number">
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-12 d-flex">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Provider Email ID <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="provideremailid" placeholder="example :- admin@gmail.com">
+                                                                          </div>
+                                                                          <div class="col-md-5 form-group">
+                                                                              <label>Provider B.O.D. <span class="text-danger">*</span></label>
+                                                                              <input type="date" id="Provider" class="form-control"
+                                                                                  name="providerbod" placeholder="Birth Of Date">
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-12 d-flex">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Provider Address <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="provideraddress" placeholder="Provider Address">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 my-3 mt-4">
+                                                                          <h5>Business Information</h5>
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Name <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businessname" placeholder="Business Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Mobile Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businessnumber" placeholder="Business Number">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Email ID <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businessemailid" placeholder="example :- admin.info@gmail.com">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business GST Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businessgstnumber" placeholder="24AAAAA0000A1Z5">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Type of Business <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businesstype" placeholder="Business Type">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business TDS Details <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businesstdsdetails" placeholder="TDS Details">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Pancard Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businesspancardnumber" placeholder="Pan Card Number">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Category <span class="text-danger">*</span></label>
+                                                                              <select id="contact-info" class="form-control" name="businesscategory">
+                                                                                  <option selected>Select category</option>
+                                                                                  <% service.forEach((v)=>{%>
+                                                                                    <option value="<%=v.addservices%>">
+                                                                                      <%=v.addservices%>
+                                                                                    </option>
+                                                                                    <%})%>
+                                                                                </select>
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Business Address <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="businessaddress" placeholder="Business Address">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 my-3 mt-4">
+                                                                          <h5>Self Person Information</h5>
+                                                                      </div>
+                                                                      <h6>1. Self Person</h6>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Name <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonname" placeholder="Self Person Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Mobile Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonnumber" placeholder="Self Person Mobile Number">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Email ID <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonemailid" placeholder="example :- admin.manager@gmail.com">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Position <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonposition" placeholder="Self Person Position">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <h6 class="mt-2">2. Self Person</h6>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Name</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonname" placeholder="Self Person Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Mobile Number</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonnumber" placeholder="Self Person Mobile Number">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Email ID</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonemailid" placeholder="example :- admin.manager@gmail.com">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Position</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonposition" placeholder="Self Person Position">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <h6 class="mt-2">3. Self Person</h6>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Name</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonname" placeholder="Self Person Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Mobile Number</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonnumber" placeholder="Self Person Mobile Number">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Email ID</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonemailid" placeholder="example :- admin.manager@gmail.com">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Position</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonposition" placeholder="Self Person Position">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <h6 class="mt-2">4. Self Person</h6>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Name</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonname" placeholder="Self Person Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Mobile Number</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonnumber" placeholder="Self Person Mobile Number" >
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Email ID</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonemailid" placeholder="example :- admin.manager@gmail.com">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Self Person Position</label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="selfpersonposition" placeholder="Self Person Position">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 my-3 mt-4">
+                                                                          <h5>Bank Information</h5>
+                                                                      </div>
+                                                                      <h6>1. Bank Details</h6>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Bank Name <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="bankname" placeholder="Bank Name">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Bank Account Number <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="bankaccountnumber" placeholder="Bank Account Number">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Bank IFSC Code <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="bankifsccode" placeholder="IFSC Number">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Bank Branch Name <span class="text-danger">*</span></label>
+                                                                              <input type="text" id="Provider" class="form-control"
+                                                                                  name="bankbranchname" placeholder="Banck Branch Name">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 my-3 mt-4">
+                                                                          <h5>Upload Documents</h5>
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Aadharcard Image JPEG/PDF <span class="text-danger">*</span></label>
+                                                                              <input type="file" name="frontimg" class="drop-zone__input">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Pancard Image JPEG/PDF <span class="text-danger">*</span></label>
+                                                                              <input type="file" name="frontimg" class="drop-zone__input">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>GST File JPEG/PDF <span class="text-danger">*</span></label>
+                                                                              <input type="file" name="frontimg" class="drop-zone__input">
+                                                                          </div>                                                
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>TDS File JPEG/PDF <span class="text-danger">*</span></label>
+                                                                              <input type="file" name="frontimg" class="drop-zone__input">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex mb-2">
+                                                                          <div class="col-md-5 me-5">
+                                                                              <label>Agreement File JPEG/PDF <span class="text-danger">*</span></label>
+                                                                              <input type="file" name="frontimg" class="drop-zone__input">
+                                                                          </div>                                                
+                                                                      </div>
+                                                                      <div class="col-12 d-flex my-3 mt-4">
+                                                                          <div class="checkbox">
+                                                                              <input type="checkbox" id="checkbox1"
+                                                                                  class='form-check-input' >
+                                                                              <label for="checkbox1">All information is correct</label>
+                                                                          </div>                                         
+                                                                      </div>
+                                                                      <div class="col-12 d-flex my-3 mt-4">
+                                                                          <input type="submit"
+                                                                              class="btn btn-primary  my-2 px-3 py-1" value="Submit">
+                                                                          <button type="reset"
+                                                                              class="btn btn-light-secondary px-4  mx-3 my-2 py-1">Reset</button>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </form>
+                                                      </div>
+                                                  </div>
+                          </div>
+                          <div id="b" class="hide">
+                            <h2>This is id #b</h2>
+                          </div>
+                          <div id="c" class="hide">
+                            <h2>This is id #c</h2>
+                          </div>
+                          <div id="d" class="hide">
+                            <h2>This is id #d</h2>
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $('#select_box').change(function () {
+var select=$(this).find(':selected').val();        
+ $(".hide").hide();
+ $('#' + select).show();
+
+	    }).change();
+
+    </script>
+
+<%-include('admin_footer')%>

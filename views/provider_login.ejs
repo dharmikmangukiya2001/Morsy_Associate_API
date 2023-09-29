@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Service Provider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+
+<body>
+    <div class="fixed-top">
+        <div class="form-group " id="alert">
+            <%if(messages.success){%>
+                <div class="alert alert-light-success color-success text-center" id="hideMe">
+                    <%=messages.success%>
+                </div>
+                <%}%>
+        </div>
+    </div>
+    <style>
+        body>div {
+            border: 0px solid grey;
+        }
+
+        html,
+        body,
+        #alert {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #alert {
+            overflow: hidden;
+            position: relative;
+        }
+
+        #hideMe {
+            -webkit-animation: cssAnimation 5s forwards;
+            animation: cssAnimation 5s forwards;
+        }
+
+        @keyframes cssAnimation {
+            0% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes cssAnimation {
+            0% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <div id="auth">
+
+        <div class="row h-100">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <div class="auth-logo">
+                        <a href="/provider/login"><img src="/images/logo/favicon.png" alt="Logo"></a>
+                    </div>
+                    <h1 class="auth-title">Service Provider Log in.</h1>
+                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+
+                    <form action="/provider/logindata" method="post">
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="email" class="form-control form-control-xl" name="provideremail" required="" placeholder="Email ID">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="password" class="form-control form-control-xl" name="providerpassword" required="" placeholder="Password">
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-lg d-flex align-items-end">
+                            <input class="form-check-input me-2" type="checkbox" required value="" id="flexCheckDefault">
+                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                                Keep me logged in
+                            </label>
+                        </div>
+                        <input class="btn btn-primary btn-block btn-lg shadow-lg mt-5" type="submit" value="Log in">
+                    </form>
+                    
+                </div>
+            </div>
+            <div class="col-lg-7 d-none d-lg-block">
+                <div id="auth-right">
+                    <img src="/images/bg/4853434.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

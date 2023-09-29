@@ -1,0 +1,177 @@
+<%-include('admin_header')%>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            color: #000;
+        }
+
+        .student-profile .card {
+            border-radius: 10px;
+        }
+
+        .student-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .student-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .student-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .student-profile .table th,
+        .student-profile .table td {
+            font-size: 14px;
+            padding: 5px 10px;
+            color: #000;
+        }
+
+        .table-bordered>:not(caption)>*>* {
+            border-width: 0 0px;
+        }
+    </style>
+
+
+
+
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                    </div>
+                    <div class="col-12 col-md-6 order-md-2 order-first">
+                        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Provider</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Horizontal form layout section start -->
+            <section id="basic-horizontal-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12 col-12">
+                        <div class="col-lg-10">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-transparent border-0">
+                                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i> General Information</h3>
+                                </div>
+                                <div class="card-body pt-0">
+                                    
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th width="30%">Provider Name</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providername%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Company Name</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.companyname%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Company Gstin Number</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.companygstin%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Email Id</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.provideremail%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Mobile Number</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providernumber%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Services Name</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providerservice%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Businesses Type</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providerbusinessestype%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Businesses Details</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providerbusinessesdetails%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Businesses Address</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providerbusinessesaddress%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Provider Password</th>
+                                            <td width="2%">:</td>
+                                            <td>
+                                                <%=providerdatas.providerpassword%>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%"></th>
+                                            <th >
+                                                <tr>
+                                                    <td>
+                                                        <span class="badge bg-danger px-3 py-3 me-3"><a class="text-white" href="/admin/providerdelete/<%=providerdatas._id%>">Delete Provider</a></span>
+                                                        <span class="badge bg-success px-3 py-3"><a class="text-white" href="/admin/providerupdate/<%=providerdatas._id%>">Update Provider Details</a></span>
+                                                    </td>
+                                                </tr>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+
+
+
+
+
+        <%-include('admin_footer')%>
