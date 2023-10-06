@@ -70,7 +70,7 @@ exports.logindata = async (req, res) => {
 
 
 
-exports.home = async (req,res) => {
+exports.home = async (req, res) => {
     // try {
 
     //     var admindata = await admin.find();
@@ -80,14 +80,14 @@ exports.home = async (req,res) => {
     // } catch (err) {
 
     //     console.log(err);
-        
+
     // }
     try {
-        console.log(req.headers,"ssssssss");
-        var decode = await adminjwt.verify(req.headers.token , process.env.key);
+        console.log(req.headers, "ssssssss");
+        var decode = await adminjwt.verify(req.headers.token, process.env.key);
         const admindata = await admin.findById(decode.id)
-        res.json({message:"admindataaaaaaaaaaaaa",admindata});
-        console.log(admindata,"dfsdfffd");
+        res.json({ message: "admindataaaaaaaaaaaaa", admindata });
+        console.log(admindata, "dfsdfffd");
     } catch (err) {
         console.log(err);
     }
@@ -122,7 +122,7 @@ exports.servicesdetails = async (req, res) => {
 
         var service = await services.findById(req.params.id);
 
-        res.json({message:"Success!", service});
+        res.json({ message: "Success!", service });
 
     } catch (err) {
 
@@ -137,43 +137,49 @@ exports.servicesdetails = async (req, res) => {
 
 //services add post
 
-exports. addservices = async (req, res) => {
+exports.addservices = async (req, res) => {
 
-    // console.log(req.files, "asd4fghj")
+    console.log(req.files, "asd4fghj")
 
     try {
 
-        console.log(req.body,"dddddddd");
+        console.log(req.body, "dddddddd");
 
         const {
             addservices,
             servicedetails,
+            providername,
+            providernumber,
+            providercompanyname,
             provideremail,
 
         } = req.body
 
         var servicesimg = [];
-            // console.log(req.files,"sdsdsd");
+        console.log(req.files, "sdsdsd");
         for (var i of req.files) {
-            
+
             servicesimg.push('/' + i.filename);
 
         }
-        console.log(servicesimg,"123456");
+        console.log(servicesimg, "123456");
 
         var newcategory = await services.create({
 
             addservices,
             servicedetails,
             servicesimg,
+            providername,
+            providernumber,
+            providercompanyname,
             provideremail
 
         });
-        
+
         if (newcategory) {
 
 
-            res.json({ message: "Success! Category Add Successfully",newcategory });
+            res.json({ message: "Success! Category Add Successfully", newcategory });
 
             console.log("Success! Category Add Successfully");
 
@@ -205,23 +211,23 @@ exports.deleteservices = async (req, res) => {
 
         var deleteServiceimg = await services.findById(req.params.id);
 
-        console.log(deleteServiceimg,"dawerh");
+        console.log(deleteServiceimg, "dawerh");
 
         var imgpaths = deleteServiceimg.servicesimg
 
-        console.log(imgpaths,"dasdasfge");
+        console.log(imgpaths, "dasdasfge");
 
         imgpaths.forEach(imgpath => {
 
-            fs.unlinkSync(path.join(__dirname, '../images/' + imgpath),()=>{
+            fs.unlinkSync(path.join(__dirname, '../images/' + imgpath), () => {
 
                 console.log("Success! Image Deleted Successfully");
 
-                res.json({message:"Success! Image Deleted Successfully"});
+                res.json({ message: "Success! Image Deleted Successfully" });
 
             });
         })
-        
+
 
         var deletedata = await services.findByIdAndDelete(req.params.id);
 
@@ -250,38 +256,47 @@ exports.deleteservices = async (req, res) => {
 
 // service data update put
 
-exports.updateservice = async (req,res) => {
+exports.updateservice = async (req, res) => {
 
     try {
-        
+
         var servicedata = await services.findById(req.params.id);
-        
-        console.log(servicedata,"jdasjfg");
+
+        console.log(servicedata, "jdasjfg");
 
         if (servicedata) {
 
-            servicedata.servicesimg.forEach(async (image)=>{
+            console.log(req.files.length, "dsahjdgafgasfjgsdjfgsdjfgseju");
+            if (req.files.length == 0) {
+                const updatedUser = await services.findByIdAndUpdate(req.params.id, req.body);
 
-                const oldImagePath = path.join(__dirname,'../images/' + image);
+                res.json({ message: "Success! Service Data Updated Successfully", updatedUser });
+            }
+            else {
+                servicedata.servicesimg.forEach(async (image) => {
 
-                if(fs.existsSync(oldImagePath)){
+                    const oldImagePath = path.join(__dirname, '../images/' + image);
 
-                    fs.unlinkSync(oldImagePath);
+                    if (fs.existsSync(oldImagePath)) {
 
-                }
+                        fs.unlinkSync(oldImagePath);
 
-            });
+                    }
 
-            const newImagesPath = req.files.map(file => '../images/' + file.filename);
+                });
 
-            const updatedUser = await services.findByIdAndUpdate(req.params.id, {...req.body, servicesimg: newImagesPath}, {new:true});
+                const newImagesPath = req.files.map(file => file.filename);
 
-            res.json({message:"Success! Service Data Updated Successfully", updatedUser });
+                const updatedUser = await services.findByIdAndUpdate(req.params.id, { ...req.body, servicesimg: newImagesPath }, { new: true });
+
+                res.json({ message: "Success! Service Data Updated Successfully", updatedUser });
+
+            }
 
         }
-        else{
+        else {
 
-            res.json({message:"Sorry! Service Data Not Updated Successfully"});
+            res.json({ message: "Sorry! Service Data Not Updated Successfully" });
         }
 
     } catch (err) {
@@ -325,7 +340,7 @@ exports.provider = async (req, res) => {
 
     try {
 
-        console.log(req.body);
+        console.log(req.body, "bodydata:::");
 
         const {
             providername,
@@ -334,6 +349,7 @@ exports.provider = async (req, res) => {
             providerbod,
             provideraddress,
             businessname,
+            businessdetails,
             businessnumber,
             businessemailid,
             businessgstnumber,
@@ -342,10 +358,10 @@ exports.provider = async (req, res) => {
             businesspancardnumber,
             businesscategory,
             businessaddress,
-            selfpersonname,
-            selfpersonnumber,
-            selfpersonemailid,
-            selfpersonposition,
+            salespersonname,
+            salespersonnumber,
+            salespersonemailid,
+            salespersonposition,
             bankname,
             bankaccountnumber,
             bankifsccode,
@@ -375,16 +391,17 @@ exports.provider = async (req, res) => {
                 businessname,
                 businessnumber,
                 businessemailid,
+                businessdetails,
                 businessgstnumber,
                 businesstype,
                 businesstdsdetails,
                 businesspancardnumber,
                 businesscategory,
                 businessaddress,
-                selfpersonname,
-                selfpersonnumber,
-                selfpersonemailid,
-                selfpersonposition,
+                salespersonname,
+                salespersonnumber,
+                salespersonemailid,
+                salespersonposition,
                 bankname,
                 bankaccountnumber,
                 bankifsccode,
@@ -393,8 +410,8 @@ exports.provider = async (req, res) => {
 
             });
 
-            res.json({ message: "Success! Provider Add Successfully",providerdata });
-            console.log(req.body);
+            res.json({ message: "Success! Provider Add Successfully", providerdata });
+            console.log(providerdata, "sdsdsddsd");
         }
         else {
             res.json({ message: "Sorry! Provider Add Failed" });
@@ -463,6 +480,8 @@ exports.deleteproviderdata = async (req, res) => {
 
 exports.updateprovider = async (req, res) => {
 
+    log(req.body, "body:::")
+
     try {
         var data = await provider.findById(req.params.id);
 
@@ -470,22 +489,30 @@ exports.updateprovider = async (req, res) => {
 
         if (data) {
 
-            data.img.forEach(async (image) => {
-                const oldImagePath = path.join(__dirname, '../images/' + image);
+            if (req.file.length == 0) {
 
-                if (fs.existsSync(oldImagePath)) {
+                const updatedUser = await provider.findByIdAndUpdate(req.params.id, { ...req.body, img: newImagesPath }, { new: true });
 
-                    fs.unlinkSync(oldImagePath);
+                res.json({ message: "Success! Provider Data Updated Successfully", updatedUser });
+            }
+            else {
+                data.img.forEach(async (image) => {
+                    const oldImagePath = path.join(__dirname, '../images/' + image);
 
-                }
+                    if (fs.existsSync(oldImagePath)) {
 
-            });
+                        fs.unlinkSync(oldImagePath);
 
-            const newImagesPath = req.files.map(file => '../images/' + file.filename);
+                    }
 
-            const updatedUser = await provider.findByIdAndUpdate(req.params.id, { ...req.body, img: newImagesPath }, { new: true });
+                });
 
-            res.json({ message: "Success! Provider Data Updated Successfully", updatedUser });
+                const newImagesPath = req.files.map(file => '../images/' + file.filename);
+
+                const updatedUser = await provider.findByIdAndUpdate(req.params.id, { ...req.body, img: newImagesPath }, { new: true });
+
+                res.json({ message: "Success! Provider Data Updated Successfully", updatedUser });
+            }
         }
         else {
 

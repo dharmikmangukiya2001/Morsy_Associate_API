@@ -50,6 +50,10 @@ const ProviderSchema = new mongoose.Schema({
         type:String
     },
 
+    businessdetails:{
+        type:String
+    },
+
     businesstdsdetails:{
         type:String
     },
@@ -69,19 +73,19 @@ const ProviderSchema = new mongoose.Schema({
 
     // Self Person Information
 
-    selfpersonname:{
+    salespersonname:{
         type:Array
     },
 
-    selfpersonnumber:{
+    salespersonnumber:{
         type:Array
     },
 
-    selfpersonemailid:{
+    salespersonemailid:{
         type:Array
     },
 
-    selfpersonposition:{
+    salespersonposition:{
         type:Array
     },
 

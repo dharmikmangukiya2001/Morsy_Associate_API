@@ -6,9 +6,19 @@ const ServiceSchema = new mongoose.Schema({
     servicedetails:{
         type:String
     },
+    providernumber:{
+        type:String
+    },
+    providercompanyname:{
+        type:String
+    },
+    providername:{
+        type:String
+    },
     provideremail:{
         type:String
     },
+
     servicesimg:{
         type:Array
     },
