@@ -30,43 +30,51 @@ const ProviderSchema = new mongoose.Schema({
 
     // Business Information
 
-    businessname:{
+    bussinessname:{
         type:String
     },
 
-    businessnumber:{
+    bussinessnumber:{
         type:Number
     },
 
-    businessemailid:{
+    bussinessemailid:{
         type:String
     },
 
-    businessgstnumber:{
+    bussinesswebsiteurl:{
         type:String
     },
 
-    businesstype:{
+    bussinessgstnumber:{
         type:String
     },
 
-    businessdetails:{
+    bussinesstype:{
         type:String
     },
 
-    businesstdsdetails:{
+    bussinessdetails:{
         type:String
     },
 
-    businesspancardnumber:{
+    bussinesstdsdetails:{
         type:String
     },
 
-    businesscategory:{
+    bussinesspancardnumber:{
         type:String
     },
 
-    businessaddress:{
+    bussinesscategory:{
+        type:String
+    },
+
+    bussinessaddress:{
+        type:String
+    },
+    
+    collaborationdetails:{
         type:String
     },
 

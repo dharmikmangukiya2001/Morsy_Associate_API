@@ -25,6 +25,7 @@ const {
 
     // providers data
     providerdata,
+    providerdetails,
     provider,
     deleteproviderdata,
     updateprovider,
@@ -56,11 +57,13 @@ routes.put('/updateservice/:id', admin_token,upload.array("serviceimage"), updat
 // Provider show page get data
 routes.get('/providerdata', admin_token, providerdata);
 
-routes.post('/addprovider', admin_token, upload.array("frontimg"), provider);
+routes.get('/providerdetails/:id',admin_token, providerdetails);
+
+routes.post('/addprovider', admin_token, upload.array("providerimg"), provider);
 
 routes.get('/deleteprovider/:id', admin_token, deleteproviderdata);
 
-routes.put('/updateprovider/:id', admin_token, upload.array("frontimg"), updateprovider);
+routes.put('/updateprovider/:id', admin_token, upload.array("providerimg"), updateprovider);
 
 
 

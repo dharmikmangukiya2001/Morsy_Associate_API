@@ -20,11 +20,11 @@ const fs = require('fs');
 
 exports.logindata = async (req, res) => {
 
-    console.log(req.body);
+    // console.log(req.body);
 
     const { adminemail, adminpassword } = req.body
 
-    console.log(req.body);
+    // console.log(req.body);
 
     var data = await admin.findOne({ adminemail });
 
@@ -58,7 +58,7 @@ exports.logindata = async (req, res) => {
         }
         else {
 
-            console.log(req.body);
+            // console.log(req.body);
 
             res.json({ message: "Sorry! Admin Login Password Failed" });
 
@@ -83,11 +83,11 @@ exports.home = async (req, res) => {
 
     // }
     try {
-        console.log(req.headers, "ssssssss");
+        // console.log(req.headers, "ssssssss");
         var decode = await adminjwt.verify(req.headers.token, process.env.key);
         const admindata = await admin.findById(decode.id)
-        res.json({ message: "admindataaaaaaaaaaaaa", admindata });
-        console.log(admindata, "dfsdfffd");
+        res.json({ message: "admindata::", admindata });
+        // console.log(admindata, "dfsdfffd");
     } catch (err) {
         console.log(err);
     }
@@ -139,11 +139,11 @@ exports.servicesdetails = async (req, res) => {
 
 exports.addservices = async (req, res) => {
 
-    console.log(req.files, "asd4fghj")
+    // console.log(req.files, "asd4fghj")
 
     try {
 
-        console.log(req.body, "dddddddd");
+        // console.log(req.body, "dddddddd");
 
         const {
             addservices,
@@ -207,15 +207,15 @@ exports.addservices = async (req, res) => {
 exports.deleteservices = async (req, res) => {
     try {
 
-        console.log(req.params);
+        // console.log(req.params);
 
         var deleteServiceimg = await services.findById(req.params.id);
 
-        console.log(deleteServiceimg, "dawerh");
+        // console.log(deleteServiceimg, "dawerh");
 
         var imgpaths = deleteServiceimg.servicesimg
 
-        console.log(imgpaths, "dasdasfge");
+        // console.log(imgpaths, "dasdasfge");
 
         imgpaths.forEach(imgpath => {
 
@@ -231,7 +231,7 @@ exports.deleteservices = async (req, res) => {
 
         var deletedata = await services.findByIdAndDelete(req.params.id);
 
-        console.log(deletedata);
+        // console.log(deletedata);
 
         if (deletedata) {
 
@@ -266,7 +266,7 @@ exports.updateservice = async (req, res) => {
 
         if (servicedata) {
 
-            console.log(req.files.length, "dsahjdgafgasfjgsdjfgsdjfgseju");
+            // console.log(req.files.length, "dsahjdgafgasfjgsdjfgsdjfgseju");
             if (req.files.length == 0) {
                 const updatedUser = await services.findByIdAndUpdate(req.params.id, req.body);
 
@@ -286,6 +286,7 @@ exports.updateservice = async (req, res) => {
                 });
 
                 const newImagesPath = req.files.map(file => file.filename);
+                console.log(newImagesPath,"fsdsdfdfd");
 
                 const updatedUser = await services.findByIdAndUpdate(req.params.id, { ...req.body, servicesimg: newImagesPath }, { new: true });
 
@@ -315,6 +316,7 @@ exports.updateservice = async (req, res) => {
 
 exports.providerdata = async (req, res) => {
 
+
     try {
 
         var providerdata = await provider.find();
@@ -329,12 +331,31 @@ exports.providerdata = async (req, res) => {
 }
 
 
+// Provider singl data show page
+
+exports.providerdetails = async (req, res) => {
+
+
+    try {
+
+        var providerdata = await provider.findById(req.params.id);
+
+        res.json({ message: "Success!", providerdata });
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
+}
+
+
 
 
 
 // provider data add post
 
-exports.provider = async (req, res) => {
+exports.provider = async (req, res) => { 
 
     console.log(req.files, "sdfgh");
 
@@ -348,16 +369,18 @@ exports.provider = async (req, res) => {
             provideremailid,
             providerbod,
             provideraddress,
-            businessname,
-            businessdetails,
-            businessnumber,
-            businessemailid,
-            businessgstnumber,
-            businesstype,
-            businesstdsdetails,
-            businesspancardnumber,
-            businesscategory,
-            businessaddress,
+            bussinessname,
+            bussinessdetails,
+            bussinessnumber,
+            bussinessemailid,
+            bussinesswebsiteurl,
+            bussinessgstnumber,
+            bussinesstype,
+            bussinesstdsdetails,
+            bussinesspancardnumber,
+            bussinesscategory,
+            bussinessaddress,
+            collaborationdetails,
             salespersonname,
             salespersonnumber,
             salespersonemailid,
@@ -377,7 +400,7 @@ exports.provider = async (req, res) => {
         }
         console.log(img);
 
-        var providerdata = await provider.findOne({ businessname });
+        var providerdata = await provider.findOne({ bussinessname });
 
         if (providerdata == null) {
 
@@ -388,16 +411,18 @@ exports.provider = async (req, res) => {
                 provideremailid,
                 providerbod,
                 provideraddress,
-                businessname,
-                businessnumber,
-                businessemailid,
-                businessdetails,
-                businessgstnumber,
-                businesstype,
-                businesstdsdetails,
-                businesspancardnumber,
-                businesscategory,
-                businessaddress,
+                bussinessname,
+                bussinessnumber,
+                bussinessemailid,
+                bussinessdetails,
+                bussinesswebsiteurl,
+                bussinessgstnumber,
+                bussinesstype,
+                bussinesstdsdetails,
+                bussinesspancardnumber,
+                bussinesscategory,
+                bussinessaddress,
+                collaborationdetails,
                 salespersonname,
                 salespersonnumber,
                 salespersonemailid,
@@ -406,7 +431,7 @@ exports.provider = async (req, res) => {
                 bankaccountnumber,
                 bankifsccode,
                 bankbranchname,
-                img
+                img,
 
             });
 

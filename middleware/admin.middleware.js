@@ -32,7 +32,7 @@ const admin_token = async (req, res, next) => {
 
             var data = await adminSchema.findById(admindata.id);
 
-            console.log(data, "ddddddddd");
+            // console.log(data, "ddddddddd");
 
             if (data == null) {
 
