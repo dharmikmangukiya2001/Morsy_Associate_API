@@ -505,18 +505,19 @@ exports.deleteproviderdata = async (req, res) => {
 
 exports.updateprovider = async (req, res) => {
 
-    log(req.body, "body:::")
+    // log(req.body, "body:::")
 
     try {
         var data = await provider.findById(req.params.id);
 
         console.log(data, "dfghgj258");
+        console.log(req.files.length,"::::files");
 
         if (data) {
 
-            if (req.file.length == 0) {
+            if (req.files.length == 0) {
 
-                const updatedUser = await provider.findByIdAndUpdate(req.params.id, { ...req.body, img: newImagesPath }, { new: true });
+                const updatedUser = await provider.findByIdAndUpdate(req.params.id,req.body);
 
                 res.json({ message: "Success! Provider Data Updated Successfully", updatedUser });
             }
@@ -531,10 +532,18 @@ exports.updateprovider = async (req, res) => {
                     }
 
                 });
+                
+                img =[]
+                for (var i of req.files) {
 
-                const newImagesPath = req.files.map(file => '../images/' + file.filename);
+                    img.push('/' + i.filename);
+        
+                }
 
-                const updatedUser = await provider.findByIdAndUpdate(req.params.id, { ...req.body, img: newImagesPath }, { new: true });
+                // const newImagesPath = '../images/' +req.files.filename
+
+                req.body.img = img
+                const updatedUser = await provider.findByIdAndUpdate(req.params.id,req.body);
 
                 res.json({ message: "Success! Provider Data Updated Successfully", updatedUser });
             }
